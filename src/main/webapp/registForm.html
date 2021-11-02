@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#registFormArea{
+		width: 800px;
+		margin: auto;
+		border : 1px solid green;
+	}
+	h1{
+		text-align: center;
+		border-bottom : 3px double blue;
+	}
+	table{
+		width: 780px;
+		margin: auto;
+		text-align: center;
+	}
+	.td_left{
+		width: 200px;
+	}
+	.td_right{
+		width: 780px;
+	}
+	#memberZipCode{
+		width: 67px;
+	}
+</style>
+<script>
+	function checkMemberId(){
+		//var memberId = document.registForm.memberId;		//html 문서 자체=document
+		var memberId = document.getElementById("memberId");		
+		//alert(memberId.value);
+		
+		window.open("idCheck.me?memberId=" + memberId.value, "idCheckWindow", "width=400, height=300");
+	}
+	
+	function searchZipCode(){
+		window.open("zipSearch.jsp", "zipSearchWindow", "width=440, height=350");
+	}
+	
+	function checkPassword(){
+		var passwd1 = document.getElementById("memberPasswd1");
+		var passwd2 = document.getElementById("memberPasswd2");
+		alert(passwd1.value);
+		var errorMessage = document.getElementById("errorMessage");
+		
+		if(passwd1.value != passwd2.value){
+			errorMessage.innerHTML = "<font color = 'red'>Password invalid!</font>";
+		}
+		else{
+			errorMessage.innerHTML = "";
+		}
+	}
+</script>
+</head>
+<body>
+<section id = "registFormArea">
+	<h1>회원등록</h1>
+	<form action = "memberRegist.me" method = "POST" name = "registForm">
+		<table>
+			<tr>
+				<td class = "td_left"><label for = "memberId">회원아이디 : </label></td>
+				<td class = "td_right">
+					<input type = "text" name = "memberId" id = "memberId"
+					required="required" placeholder="회원아이디"/>
+					<input type = "button" value = "아이디 중복체크" 
+					onclick="checkMemberId()"/>
+				</td>
+			</tr>
+			<tr>
+				<td class = "td_left"><label for = "memberName">회원이름 : </label></td>
+				<td class = "td_right">
+					<input type = "text" name = "memberName" id = "memberName"
+					required="required" placeholder="회원이름"/>
+				</td>
+			</tr>
+			<tr>
+				<td class = "td_left"><label for = "memberAge">회원나이 : </label></td>
+				<td class = "td_right">
+					<input type = "number" name = "memberAge" id = "memberAge"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td class = "td_left"><label for = "memberEmail">회원이메일 : </label></td>
+				<td class = "td_right">
+					<input type = "email" name = "memberEmail" id = "memberEmail"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td class = "td_left"><label for = "memberZipCode">우편번호 : </label></td>
+				<td class = "td_right">
+					<input type = "text" name = "memberZipCode" id = "memberZipCode"
+					readonly="readonly"	/>
+					<input type="button" value = "우편번호검색" onclick = "searchZipCode()"/>
+				</td>
+			</tr>
+			<tr>
+				<td class = "td_left"><label for = "memberAddr1">기본주소 : </label></td>
+				<td class = "td_right">
+					<input type = "text" name = "memberAddr1" id = "memberAddr1"
+					readonly="readonly"/>
+				</td>
+			</tr>
+			<tr>
+				<td class = "td_left"><label for = "memberAddr2">상세주소 : </label></td>
+				<td class = "td_right">
+					<input type = "text" name = "memberAddr2" id = "memberAddr2"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td class = "td_left"><label for = "memberTel">전화번호 : </label></td>
+				<td class = "td_right">
+					<input type = "text" name = "memberTel" id = "memberTel"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td class = "td_left"><label for = "memberGender1">성별 : </label></td>
+				<td class = "td_right">
+					<input type = "radio" name = "memberGender" id = "memberGender1"
+					value = "M"/>남자
+					<input type = "radio" name = "memberGender" id = "memberGender2"
+					value = "F" checked="checked"/>여자
+				</td>
+			</tr>
+			<tr>
+				<td class = "td_left"><label for = "memberCountry">회원고향 : </label></td>
+				<td class = "td_right">
+					<input type = "text" name = "memberCountry" id = "memberCountry"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td class = "td_left"><label for = "memberPasswd1">비밀번호 : </label></td>
+				<td class = "td_right">
+					<input type = "password" name = "memberPasswd1" id = "memberPasswd1"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td class = "td_left"><label for = "memberPasswd2">비밀번호확인 : </label></td>
+				<td class = "td_right">
+					<input type = "password" name = "memberPasswd2" id = "memberPasswd2"
+					onblur = "checkPassword()"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan = "2"><span id = "errorMessage"></span></td>
+			</tr>
+			<tr>
+				<td colspan = "2" style = "text-align: center">
+					<input type = "submit" value = "회원가입"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</section>
+</body>
+</html>

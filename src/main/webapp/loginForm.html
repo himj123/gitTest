@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type = "text/css">
+	#formArea{
+		width : 300px;
+		height : 250px;
+		border : 1px solid red;
+		margin : auto;
+		text-align: center;
+	}
+	
+	h1{
+		text-align: center;
+	}
+	
+	input[type="submit"]{
+		margin-top : 15px;
+	}
+	
+	fieldset {
+		width : 280px;
+		margin : auto;
+		border : none;
+	}
+</style>
+</head>
+<body>
+<section id = "formArea">
+<h1>로그인</h1>
+<form action="login.me" method = "POST">
+	<fieldset>
+	<legend>로그인</legend>
+		<label for = "memberId">아이디 : </label>
+		<input type = "text" name = "memberId" id = "memberId"><br>
+		<label for = "memberPassword">비밀번호 : </label>
+		<input type = "password" name = "memberPassword" id = "memberPassword"><br>
+		<label for = "cookieUse">쿠키사용 : </label>
+		<input type = "checkbox" name = "cookieUse" id = "cookieUse"><br>
+		
+		<input type = "submit" value = "로그인">
+	</fieldset>
+</form>
+</section>
+</body>
+</html>
